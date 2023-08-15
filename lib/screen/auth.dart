@@ -115,7 +115,9 @@ class _AuthScreenState extends State<AuthScreen> {
   void _nextPressed() {
     _emailEntered = _emailController.text.trim();
     _enteredPassword = _passwordController.text.trim();
-    final confirmPass = _passwordConfirmController.text.trim();
+    final confirmPass = (_mode == LoginMode.login)
+        ? _enteredPassword
+        : _passwordConfirmController.text.trim();
 
     final emailValidation = validateEmail(_emailEntered);
     final passValidation = validatePassword(_enteredPassword) ??
